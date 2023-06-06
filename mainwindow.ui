@@ -18,7 +18,7 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -32,19 +32,62 @@
           </property>
           <widget class="QWidget" name="tab_5">
            <attribute name="title">
-            <string>Tab 1</string>
+            <string>История действий</string>
            </attribute>
            <layout class="QGridLayout" name="gridLayout_2">
             <item row="1" column="0">
              <widget class="QTableWidget" name="tableWidget">
-              <row>
-               <property name="text">
-                <string>Новая строка</string>
-               </property>
-              </row>
+              <attribute name="horizontalHeaderVisible">
+               <bool>true</bool>
+              </attribute>
+              <attribute name="horizontalHeaderCascadingSectionResizes">
+               <bool>true</bool>
+              </attribute>
+              <attribute name="horizontalHeaderMinimumSectionSize">
+               <number>60</number>
+              </attribute>
+              <attribute name="horizontalHeaderDefaultSectionSize">
+               <number>85</number>
+              </attribute>
+              <attribute name="horizontalHeaderHighlightSections">
+               <bool>false</bool>
+              </attribute>
+              <attribute name="horizontalHeaderStretchLastSection">
+               <bool>true</bool>
+              </attribute>
+              <attribute name="verticalHeaderVisible">
+               <bool>false</bool>
+              </attribute>
+              <attribute name="verticalHeaderCascadingSectionResizes">
+               <bool>false</bool>
+              </attribute>
+              <attribute name="verticalHeaderHighlightSections">
+               <bool>true</bool>
+              </attribute>
+              <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+               <bool>false</bool>
+              </attribute>
+              <attribute name="verticalHeaderStretchLastSection">
+               <bool>false</bool>
+              </attribute>
               <column>
                <property name="text">
-                <string>Новый столбец</string>
+                <string>Время</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Пользователь</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Действие</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Информация</string>
                </property>
               </column>
              </widget>
@@ -55,6 +98,26 @@
            <attribute name="title">
             <string>Tab 2</string>
            </attribute>
+           <widget class="QCalendarWidget" name="calendarWidget">
+            <property name="geometry">
+             <rect>
+              <x>20</x>
+              <y>20</y>
+              <width>312</width>
+              <height>190</height>
+             </rect>
+            </property>
+           </widget>
+          </widget>
+          <widget class="QWidget" name="tab_8">
+           <attribute name="title">
+            <string>Статистика сотрудников</string>
+           </attribute>
+           <layout class="QGridLayout" name="gridLayout_7">
+            <item row="0" column="0">
+             <layout class="QVBoxLayout" name="verticalLayout_2"/>
+            </item>
+           </layout>
           </widget>
          </widget>
         </item>
@@ -67,11 +130,52 @@
        <attribute name="title">
         <string>Поступление</string>
        </attribute>
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="0" column="0">
+         <widget class="QTableWidget" name="tableWidget_2">
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
+          <property name="textElideMode">
+           <enum>Qt::ElideNone</enum>
+          </property>
+          <property name="gridStyle">
+           <enum>Qt::SolidLine</enum>
+          </property>
+          <property name="sortingEnabled">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </widget>
       <widget class="QWidget" name="tab_3">
        <attribute name="title">
         <string>Продажи</string>
        </attribute>
+       <layout class="QGridLayout" name="gridLayout_5">
+        <item row="0" column="0">
+         <widget class="QTableWidget" name="tableWidget_3">
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_7">
+       <attribute name="title">
+        <string>На складе</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_6">
+        <item row="0" column="0">
+         <widget class="QTableWidget" name="tableWidget_4">
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </widget>
       <widget class="QWidget" name="tab_4">
        <attribute name="title">
