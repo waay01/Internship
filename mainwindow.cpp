@@ -1,18 +1,88 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 
+int permission = 1;
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
     ui->tabWidget->setCurrentIndex(0);
+
+    activateContextMenu(ui->tableWidget_2);
+    activateContextMenu(ui->tableWidget_3);
+    activateContextMenu(ui->tableWidget_4);
+
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::addInTable() {
+
+}
+
+void MainWindow::editInTable() {
+
+}
+
+void MainWindow::deleteInTable() {
+
+}
+
+void MainWindow::activateContextMenu(QTableWidget *table) {
+    table->setContextMenuPolicy(Qt::CustomContextMenu);
+
+    switch(permission) {
+        case 1:
+            connect(table, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(addInTable()));
+            break;
+        case 2:
+            connect(table, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(addInTable()));
+            connect(table, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(editInTable()));
+            break;
+        case 3:
+            connect(table, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(addInTable()));
+            connect(table, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(editInTable()));
+            connect(table, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(deleteInTable()));
+            break;
+    }
+    connect(table, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(slotContextMenu(QPoint)));
+}
+
+void MainWindow::slotContextMenu(QPoint pos) {
+    QMenu *menu = new QMenu(this);
+
+    QAction *addSlot = new QAction("Добавить", this);
+    connect(addSlot, SIGNAL(triggered()), this, SLOT(addInTable()));
+
+    QAction *editSlot = new QAction("Редактировать", this);
+    connect(editSlot, SIGNAL(triggered()), this, SLOT(editInTable()));
+
+    QAction *deleteSlot = new QAction("Удалить", this);
+    connect(deleteSlot, SIGNAL(triggered()), this, SLOT(deleteInTable()));
+
+    switch(permission) {
+        case 1:
+            menu->addAction(addSlot);
+            break;
+        case 2:
+            menu->addAction(addSlot);
+            menu->addAction(editSlot);
+            break;
+        case 3:
+            menu->addAction(addSlot);
+            menu->addAction(editSlot);
+            menu->addAction(deleteSlot);
+            break;
+    }
+
+    menu->popup(ui->tableWidget_2->viewport()->mapToGlobal(pos));
+    menu->popup(ui->tableWidget_3->viewport()->mapToGlobal(pos));
+    menu->popup(ui->tableWidget_4->viewport()->mapToGlobal(pos));
 }
 
 void MainWindow::showPie(const std::map<QString, int> &data, QLayout *layout) {
@@ -128,7 +198,7 @@ std::map<QString, int> pie;
 void MainWindow::on_tabWidget_currentChanged(int index)
 {
     switch (index) {
-        case 0: {
+        case 0: { // main
             database databaseQuery;
 
             QSqlQueryModel* query = databaseQuery.execSelectQuery("select Products.Name, QuantitySold from Sales left join Products on sales.ProductCode = Products.ProductCode");
@@ -140,19 +210,23 @@ void MainWindow::on_tabWidget_currentChanged(int index)
             showPie(pie , ui->verticalLayout);
             break;
         }
-        case 1: {
+        case 1: { // deliveries
             showDB("Deliveries", ui->tableWidget_2, 1);
             break;
         }
-        case 2: {
+        case 2: { // sales
             showDB("Sales", ui->tableWidget_3, 2);
             break;
         }
-        case 3: {
+        case 3: { // products
             showDB("Products", ui->tableWidget_4);
             break;
         }
-        case 4: {
+        case 4: { // auth
+
+            break;
+        }
+        case 5: { // admin panel
 
             break;
         }

@@ -29,17 +29,32 @@ public:
     ~MainWindow();
 
   private slots:
+
+    void addInTable();
+
+    void editInTable();
+
+    void deleteInTable();
+
+    void slotContextMenu(QPoint pos);
+
     void on_tabWidget_currentChanged(int index);
 
-      void on_calendarWidget_clicked(const QDate &date);
+    void on_calendarWidget_clicked(const QDate &date);
 
     void on_tabWidget_2_currentChanged(int index);
 
 private:
     Ui::MainWindow *ui;
+
     void showPie(const std::map<QString, int> &data, QLayout *layout);
+
     void showDB(const QString &strTable, QTableWidget *tableWidget, const int& index);
+
     std::map<QString, int> getData(const QString &strTable);
+
     void showStats(const std::map<QString, int> &data, QLayout *layout);
+
+    void activateContextMenu(QTableWidget *table);
 };
 #endif // MAINWINDOW_H
