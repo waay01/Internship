@@ -15,9 +15,9 @@ find_package(Qt6 COMPONENTS Charts Sql REQUIRED)
 
 set(PROJECT_SOURCES
         main.cpp
-
         mainwindow.cpp mainwindow.h mainwindow.ui
 	database.h database.cpp
+        dialog.h dialog.cpp dialog.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

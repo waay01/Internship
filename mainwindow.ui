@@ -37,6 +37,9 @@
            <layout class="QGridLayout" name="gridLayout_2">
             <item row="1" column="0">
              <widget class="QTableWidget" name="tableWidget">
+              <property name="editTriggers">
+               <set>QAbstractItemView::NoEditTriggers</set>
+              </property>
               <attribute name="horizontalHeaderVisible">
                <bool>true</bool>
               </attribute>
@@ -70,26 +73,6 @@
               <attribute name="verticalHeaderStretchLastSection">
                <bool>false</bool>
               </attribute>
-              <column>
-               <property name="text">
-                <string>Время</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>Пользователь</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>Действие</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>Информация</string>
-               </property>
-              </column>
              </widget>
             </item>
            </layout>
@@ -145,6 +128,9 @@
           <property name="sortingEnabled">
            <bool>true</bool>
           </property>
+          <attribute name="horizontalHeaderStretchLastSection">
+           <bool>true</bool>
+          </attribute>
          </widget>
         </item>
        </layout>
@@ -159,6 +145,9 @@
           <property name="editTriggers">
            <set>QAbstractItemView::NoEditTriggers</set>
           </property>
+          <attribute name="horizontalHeaderStretchLastSection">
+           <bool>true</bool>
+          </attribute>
          </widget>
         </item>
        </layout>
@@ -173,6 +162,9 @@
           <property name="editTriggers">
            <set>QAbstractItemView::NoEditTriggers</set>
           </property>
+          <attribute name="horizontalHeaderStretchLastSection">
+           <bool>true</bool>
+          </attribute>
          </widget>
         </item>
        </layout>

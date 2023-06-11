@@ -15,6 +15,7 @@
 
 #include "database.h"
 #include "qtablewidget.h"
+#include "dialog.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -32,17 +33,21 @@ public:
 
     void addInTable();
 
-    void editInTable();
+    void editInTable(QTableWidget* table);
 
-    void deleteInTable();
+    void deleteInTable(QTableWidget* table);
 
-    void slotContextMenu(QPoint pos);
+    void slotContextMenu(QPoint pos, QTableWidget *table);
 
     void on_tabWidget_currentChanged(int index);
 
     void on_calendarWidget_clicked(const QDate &date);
 
     void on_tabWidget_2_currentChanged(int index);
+
+    void on_pushButton_clicked();
+
+    void on_pushButton_3_clicked();
 
 private:
     Ui::MainWindow *ui;
